@@ -16,6 +16,6 @@ public interface EmployeeRepository extends CrudRepository<Employees, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "update employees set first_name='Abhishek', last_name='Goyal', gender='M' where emp_no=?", nativeQuery = true)
+    @Query(value = "update employees set first_name='Ankur', last_name='Garg', gender='M' where emp_no=?", nativeQuery = true)
     void updateEmployeeDetail(Integer empId);
 }

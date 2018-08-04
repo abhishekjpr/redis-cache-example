@@ -8,19 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-
 @Slf4j
 @Service
 public class RedisServiceImpl implements RedisService {
 
     @Override
     public void dataCacheToRedis(String employeeId) {
-//        List<Employees> employeesList = new ArrayList<>();
-//        employeesList = employeeRepository.findAll();
+
         try {
             Employees employees = (Employees) redisTemplate.opsForValue().get(employeeId);
             if (null != employees) {
@@ -32,8 +26,6 @@ public class RedisServiceImpl implements RedisService {
         } catch (Exception exception) {
             log.error("[dataCacheToRedis] Exception occurred.", exception);
         }
-        if(employeeId.equals("10010"))
-            updateEmployeeDetails(employeeId);
     }
 
     @Override

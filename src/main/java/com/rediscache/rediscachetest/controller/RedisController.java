@@ -11,10 +11,15 @@ public class RedisController {
 
     @RequestMapping(value = "/cacheData", method = RequestMethod.POST)
     public void dataCache(@RequestBody String employeeId) {
-        log.info("[dataCache] Called received.");
+        log.info("[dataCache] Request received : {}", employeeId);
         redisService.dataCacheToRedis(employeeId);
     }
 
+    @RequestMapping(value = "/updateData", method = RequestMethod.POST)
+    public void updateData(@RequestBody String employeeId){
+        log.info("[updateData] Request received : {}", employeeId);
+        redisService.updateEmployeeDetails(employeeId);
+    }
     @Autowired
     RedisService redisService;
 }
